@@ -12,15 +12,15 @@ When all three provided connectors are deployed, a stream of "pageview" events a
                                                     +---------------------+      | +---------------+ |
                                                     |                     |      | |/partition=3   | |
                                                     | DefaultPartitioner  |      | |               | |
-                                              +-----+ S3 Sink Connector   +------+>|               | |
+                                              +---->| S3 Sink Connector   +------+>|               | |
                                               |     |                     |      | +---------------+ |
 +--------------------+     +-------------+    |     +---------------------+      |                   |
 |                    |     |             +----+                                  |                   |
-|  Pageviews         +---->|  pageviews  |    |                                  |                   |
-|  DatagenConnector  |     |  topic      |    |     +---------------------+      | +---------------+ |
+|  Pageviews         +---->|  pageviews  |                                       |                   |
+|  DatagenConnector  |     |  topic      |          +---------------------+      | +---------------+ |
 |                    |     |             +----+     |                     +------+>|/year=2023/... | |
-+--------------------+     +-------------+    |     | DailyPartitionere   |      | |               | |
-                                              +-----+ S3 Sink Connector   |      | |               | |
++--------------------+     +-------------+    |     | DailyPartitioner    |      | |               | |
+                                              +---->| S3 Sink Connector   |      | |               | |
                                                     |                     |      | +---------------+ |
                                                     +---------------------+      |                   |
                                                                                  +-------------------+
